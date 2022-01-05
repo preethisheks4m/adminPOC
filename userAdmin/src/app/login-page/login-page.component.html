@@ -1,1 +1,33 @@
-<p>login-page works!</p>
+<h2 class="text-allign">LOGIN PAGE</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-6  col-md-3 ">
+            <form class="form-container" [formGroup]="userAdmin" (ngSubmit)="onSubmit()">
+                <div class="form-group col-12 mb-4 col-sm-12">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" placeholder="enter email" formControlName="userEmail">
+                    <div *ngIf="userAdmin.get('userEmail')?.invalid && userAdmin.get('userEmail')?.touched" class="text-danger">email is required</div>
+                    <div *ngIf="userAdmin.get('userEmail')?.errors?.email" >enter valid email</div>
+        
+                </div>
+                
+                <div class="form-group col-12 mb-4 col-sm-12">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" placeholder="enter password" formControlName="userPassword">
+                    <div *ngIf="userAdmin.get('userPassword')?.invalid && userAdmin.get('userPassword')?.touched" class="text-danger">password is required</div>
+            <div *ngIf="userAdmin.get('userPassword')?.errors?.['minlength']">password must be 6 characters long</div>
+            <div *ngIf="userAdmin.get('userPassword')?.errors?.['maxlength']">password must be within 8 characters long</div>
+
+
+                </div>
+                <button type="submit" class="btn btn-outline-primary ">login</button>
+
+                <div>
+                    
+                    <button class="btn btn-outline-primary allign-button">Register</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
