@@ -1,1 +1,155 @@
-<p>user-registration works!</p>
+<div class="container-fluid">
+    <h1 class="font1"> USER REGISTRATION</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6  col-md-3 ">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="firstname" class="col-sm-4 col-form-label">First Name</label>
+                        <input type="name" class="form-control" placeholder="enter firstname"
+                            formControlName="firstName">
+                        <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched"
+                            class="text-danger">firstname is required</div>
+                        <div *ngIf="userForm.get('firstName')?.errors?.['minlength']">name must be 6 characters long
+                        </div>
+                        <div *ngIf="userForm.get('firstName')?.errors?.['maxlength']">name must be within 15 characters
+                        </div>
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="lastName" class="col-sm-4 col-form-label"> Last Name</label>
+                        <input type="lastName" class="form-control" placeholder="enter lastname"
+                            formControlName="lastName">
+                        <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched"
+                            class="text-danger">lastname is required</div>
+                        <div *ngIf="userForm.get('lastName')?.errors?.['minlength']">name must be 6 characters long
+                        </div>
+                        <div *ngIf="userForm.get('lastName')?.errors?.['maxlength']">name must be within 15 characters
+                        </div>
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="email" class="col-sm-4 col-form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="enter email" formControlName="userEmail">
+                        <div *ngIf="userForm.get('userEmail')?.invalid && userForm.get('userEmail')?.touched"
+                            class="text-danger">email is required</div>
+                        <div *ngIf="userForm.get('userEmail')?.errors?.email">enter valid email</div>
+
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="number" class="col-sm-4 col-form-label">Mobile Number</label>
+                        <input type="mobilenumber" class="form-control" placeholder="enter mobile number"
+                            formControlName="phoneNumber">
+                        <div *ngIf="userForm.get('phoneNumber')?.invalid && userForm.get('phoneNumber')?.touched"
+                            class="text-danger">mobile number is required</div>
+                        <div *ngIf="userForm.get('phoneNumber')?.errors?.pattern">enter correct mobile number</div>
+
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="gender" class="col-sm-4 col-form-label">Gender:</label>
+                        <div class="mb-2">
+                            <input type="radio" id="male" value="male" name="gender" formControlName="gender">
+                            <label for="male">Male</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="female" value="female" name="gender" formControlName="gender">
+                            <label for="female">Female</label>
+                        </div>
+                        <div *ngIf="userForm.get('gender')?.invalid && userForm.get('gender')?.touched"
+                            class="text-danger">gender is required</div>
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="date" class="col-sm-4 col-form-label">Date Of Birth</label>
+                        <input type="date" class="form-control" placeholder="dob" formControlName="date">
+                        </div>
+
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="password" class="col-sm-4 col-form-label">Password</label>
+                        <input type="password" class="form-control" placeholder="enter password"
+                            formControlName="userPassword">
+                        <div *ngIf="userForm.get('userPassword')?.invalid && userForm.get('userPassword')?.touched"
+                            class="text-danger">password is required</div>
+                        <div *ngIf="userForm.get('userPassword')?.errors?.['minlength']">password must be 6 characters
+                            long</div>
+                        <div *ngIf="userForm.get('userPassword')?.errors?.['maxlength']">password must be within 8
+                            characters long</div>
+
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="password" class="col-sm-4 col-form-label">Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="re-enter password"
+                            formControlName="confirmPassword">
+                        <div *ngIf="userForm.get('confirmPassword')?.invalid && userForm.get('confirmPassword')?.touched"
+                            class="text-danger">verify the password</div>
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="text" class="col-sm-4 col-form-label">Comments</label>
+                        <input type="text" class="form-control" placeholder="additional comments "
+                            formControlName="comments">
+                    </div>
+
+                    <div class="form-group col-12 mb-4 col-sm-12">
+                        <label for="address">Address:</label>
+
+
+
+
+                        <div class="form-group col-12 mb-4 col-sm-12">
+                            <label for="street" class="col-sm-2 col-form-label">Street</label>
+                            <input type="text" class="form-control" placeholder="street" formControlName="street">
+                            <div *ngIf="userForm.get('street')?.invalid && userForm.get('street')?.touched"
+                                class="text-danger">street is required</div>
+                        </div>
+
+                        <div class="form-group col-12 mb-4 col-sm-12">
+                            <label for="city" class="col-sm-2 col-form-label">City</label>
+                            <input type="text" class="form-control" placeholder="city" formControlName="city">
+                            <div *ngIf="userForm.get('city')?.invalid && userForm.get('city')?.touched"
+                                class="text-danger">city is required</div>
+                        </div>
+
+                        <div class="form-group col-12 mb-4 col-sm-12">
+                            <label for="state" class="col-sm-2 col-form-label">State</label>
+                            <input type="text" class="form-control" placeholder="state" formControlName="state">
+                            <div *ngIf="userForm.get('state')?.invalid && userForm.get('state')?.touched"
+                                class="text-danger">state is required</div>
+                        </div>
+
+                        <div class="form-group col-12 mb-4 col-sm-12">
+                            <label for="zipcode" class="col-sm-2 col-form-label">ZipCode</label>
+                            <input type="text" class="form-control" placeholder="zipcode" formControlName="zipCode">
+                            <div *ngIf="userForm.get('zipCode')?.invalid && userForm.get('zipCode')?.touched"
+                                class="text-danger">state is required</div>
+                        </div>
+
+                       
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <button type="button" class="btn btn-outline-primary " [disabled]="!userForm.valid" (click)="success()">Register</button>
+                    <br>
+                    <br>
+
+                    <button type="button" class="btn btn-outline-primary " (click)="backToLogin()">Back to
+                        login</button>
+
+                </form>
+
+            </div>

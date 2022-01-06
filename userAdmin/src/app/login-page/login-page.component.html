@@ -4,7 +4,7 @@
         <div class="col-12 col-sm-6  col-md-3 ">
             <form class="form-container" [formGroup]="userAdmin" (ngSubmit)="onSubmit()">
                 <div class="form-group col-12 mb-4 col-sm-12">
-                    <label for="email">Email</label>
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <input type="email" class="form-control" placeholder="enter email" formControlName="userEmail">
                     <div *ngIf="userAdmin.get('userEmail')?.invalid && userAdmin.get('userEmail')?.touched" class="text-danger">email is required</div>
                     <div *ngIf="userAdmin.get('userEmail')?.errors?.email" >enter valid email</div>
@@ -12,7 +12,7 @@
                 </div>
                 
                 <div class="form-group col-12 mb-4 col-sm-12">
-                    <label for="password">Password</label>
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <input type="password" class="form-control" placeholder="enter password" formControlName="userPassword">
                     <div *ngIf="userAdmin.get('userPassword')?.invalid && userAdmin.get('userPassword')?.touched" class="text-danger">password is required</div>
             <div *ngIf="userAdmin.get('userPassword')?.errors?.['minlength']">password must be 6 characters long</div>
@@ -20,11 +20,14 @@
 
 
                 </div>
-                <button type="submit" class="btn btn-outline-primary ">login</button>
+                <button type="submit" class="btn btn-outline-primary "[disabled]="!userAdmin.valid">login</button>
+                <br>
+                <br>
+                
+                <button type="button" class="btn btn-outline-primary " (click)="register()">Register</button>
 
                 <div>
                     
-                    <button class="btn btn-outline-primary allign-button">Register</button>
                 </div>
                 
             </form>
